@@ -125,7 +125,14 @@ import { MetadataAlreadyExistsError } from "typeorm";
               
             },
             body: JSON.stringify(obj)
-          }).then(res=>{ console.log(res)})
+          }).then(res=>{
+            this.setState({["nom"]: ""}),
+            this.setState({["prenom"]: ""}),
+            this.setState({["email"]: ""}),
+            this.setState({["password"]: ""}), 
+            this.setState({["confirm"]: ""}), 
+
+            console.log(res)})
        
     }
     render() {
@@ -142,22 +149,22 @@ import { MetadataAlreadyExistsError } from "typeorm";
                         <div className="mt-10">
                                             
                             <div>
-                                <input onChange={this.handleChange("nom")} value={this.state.nom} name="nom" type="text" placeholder="Nombres" className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>
+                                <input onChange={this.handleChange("nom")} value={this.state.nom} name="nom" type="text" placeholder="Nomb" className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>
                             </div>
                 
                             <div className="mt-7">                
                                 <input onChange={this.handleChange("prenom")} value={this.state.prenom} name="prenom" type="text" placeholder="Prenom" className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>                           
                             </div>
                             <div className="mt-7">                
-                                <input onChange={this.handleChange("email")} value={this.state.email} type="email" placeholder="Correo electronico" className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>                           
+                                <input onChange={this.handleChange("email")} value={this.state.email} type="email" placeholder="email" className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>                           
                             </div>
         
                             <div className="mt-7">                
-                                <input onChange={this.handleChange("password")} value={this.state.password} name='password' type="password" placeholder="Contraseña" className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>                           
+                                <input onChange={this.handleChange("password")} value={this.state.password} name='password' type="password" placeholder="password" className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>                           
                             </div>
         
                             <div className="mt-7">                
-                                <input onChange={this.handleChange("confirm")} value={this.state.confirm}  type="password" placeholder="Confirmar contraseña" className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>                           
+                                <input onChange={this.handleChange("confirm")} value={this.state.confirm}  type="password" placeholder="Confirm password" className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>                           
                             </div>
         
                             
@@ -165,7 +172,7 @@ import { MetadataAlreadyExistsError } from "typeorm";
                             <div className="mt-7">
                                 
                                 <button onClick={this.register}  className="bg-blue-500 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
-                                    Registrar 
+                                    Register 
                                 </button>
                             </div>
                 
@@ -173,10 +180,10 @@ import { MetadataAlreadyExistsError } from "typeorm";
                 
                             <div className="mt-7">
                                 <div className="flex justify-center items-center">
-                                    <label className="mr-2" >¿Ya tienes una cuenta?</label>
+                                    <label className="mr-2" >do you have an account?</label>
                                     <Link href="/" >
                                         <button className=" text-blue-500 transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
-                                        Iniciar sesion
+                                        Sign in
                                         </button>
                                         
                                     </Link>

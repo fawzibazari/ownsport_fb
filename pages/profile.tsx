@@ -102,6 +102,7 @@ class Profil extends Component {
         this.setState({[name]: event.target.value});
         console.log(this.state.email)
     }
+    
 
     render() {
         return (
@@ -132,7 +133,7 @@ class Profil extends Component {
               <div className='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
                 <button onClick={this.getinfo} className='w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Mes infos</button>
                 <button onClick={this.modifi} className='w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Modifier</button>
-                <button onClick={this.deconnexion} className='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Deconnexion</button>
+               <button onClick={this.deconnexion} className='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'><a href="/">Deconnexion</a></button>
                 <button onClick={this.delete} className='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Supprimer</button>
               </div>
           
