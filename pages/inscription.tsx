@@ -149,7 +149,7 @@ import { MetadataAlreadyExistsError } from "typeorm";
                         <div className="mt-10">
                                             
                             <div>
-                                <input onChange={this.handleChange("nom")} value={this.state.nom} name="nom" type="text" placeholder="Nomb" className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>
+                                <input onChange={this.handleChange("nom")} value={this.state.nom} name="nom" type="text" placeholder="Nom" className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>
                             </div>
                 
                             <div className="mt-7">                
