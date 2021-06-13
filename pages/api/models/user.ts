@@ -1,99 +1,34 @@
-import { sequelize } from '../db/database';
-import EmailException from '../exception/EmailException';
-import PasswordException from '../exception/PasswordException';
 
 
-
-import {Sequelize,
-    Model,
-    ModelDefined,
-    DataTypes,
-    HasManyGetAssociationsMixin,
-    HasManyAddAssociationMixin,
-    HasManyHasAssociationMixin,
-    Association,
-    HasManyCountAssociationsMixin,
-    HasManyCreateAssociationMixin,
-    Optional,} from 'sequelize'
-
-    
-
-export interface UserInterface{
-    id:number | null
-    nom:string
-    prenom:string
-    email:string
-    password:string
-   
-    
-}
+  import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
+@Entity()
+@Unique("email",["email"])
+export default class User {
 
 
-
-export default class User extends Model{
-
-    
-    public id!:number;
-    public nom!: string;
-    public prenom!: string;
-    public email!: string;
-    public password!: string;
-   
-
-    get iid(): number {
-        return <number > this.id;
-    }
-
-    get fullname(): string {
-        return this.nom + ' ' + this.prenom;
-    }
-
-    public readonly createdAt!: Date;
-    public readonly updatedAt!: Date;
+    @PrimaryGeneratedColumn()
+    public id: null | any;
+    @Column()
+    public firstname: string | any;
+    @Column()
+    public lastname: string | any;
+    @Column({name: 'email',type:"varchar",length:"155"})
+    public email: string | any;
+    @Column()
+    public password: string | any;
 
     static async isExiste(email: string) {
         
-        let user:any = await User.findAll({where:{email:email}})
-           if(user.length > 0){
-               return true
-           }
-           else{
-               return false
-           }
-       
-    }
+      let user:any = await User.findAll({where:{email:email}})
+         if(user.length > 0){
+             return true
+         }
+         else{
+             return false
+         }
+     
+  }
+  static findAll(arg0: { where: { email: string; }; }): any {
+    throw new Error('Method not implemented.');
+  }
 }
-
-User.init(
-    {
-      id: {
-        type: DataTypes.INTEGER.UNSIGNED,
-        autoIncrement: true,
-        primaryKey: true,
-      },
-      nom: {
-        type: new DataTypes.STRING(128),
-        allowNull: false,
-      },
-      prenom: {
-        type: new DataTypes.STRING(128),
-        allowNull: true,
-      },
-      email: {
-        type: new DataTypes.STRING(128),
-        allowNull: true,
-      },
-      password:{
-          type:new DataTypes.STRING(128),
-          allowNull: false,
-      },
-      
-    },
-    {
-      tableName: "User",
-      timestamps: false,
-      sequelize, // passing the `sequelize` instance is required
-    }
-  );
-
-  
