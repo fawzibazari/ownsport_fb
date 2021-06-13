@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import PasswordException from '../exception/PasswordException';
 import { Connection, createConnection, createConnections, getConnection, getRepository } from "typeorm";
-import User from '../models/user';
+import User from '../entities/user';
 import { verify } from 'jsonwebtoken';
 
 

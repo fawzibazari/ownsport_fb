@@ -4,6 +4,8 @@ import { cpuUsage, ppid } from "process"
 import { Component, useState } from "react"
 import { MetadataAlreadyExistsError } from "typeorm";
 
+import DemoForm from './Form';
+
 
 
 // export default function Inscription(this: any) {
@@ -86,10 +88,14 @@ import { MetadataAlreadyExistsError } from "typeorm";
            prenom:'',
             email: "",
             password: "",
-            confirm:''
+            confirm:'',
+         
+
+            
           
             
         }
+
         
     }
     state = {
@@ -97,17 +103,25 @@ import { MetadataAlreadyExistsError } from "typeorm";
         prenom:'',
          email: "",
          password: "",
-         confirm:''
+         confirm:'',
+       
+
+
     }
+
+   
     handleRefresh = async(e:any) => {
       
        
     }
+    
     handleChange = (name:string) => (event:any) => {
         this.setState({error: ""});
         this.setState({[name]: event.target.value});
         
     }
+    
+       
     register =()=>{
         
         let obj = {
@@ -136,7 +150,13 @@ import { MetadataAlreadyExistsError } from "typeorm";
        
     }
     render() {
+        const isSubmitDisabled =
+      !this.state.password ||
+      !this.state.confirm ||
+      this.state.password !== this.state.confirm;
+
         return (
+            
             <div className="font-sans">
             <div className="relative min-h-screen flex flex-col sm:justify-center items-center bg-gray-100 ">
                 <div className="relative sm:max-w-sm w-full">
@@ -144,6 +164,7 @@ import { MetadataAlreadyExistsError } from "typeorm";
                     <div className="card bg-red-400 shadow-lg  w-full h-full rounded-3xl absolute  transform rotate-6"></div>
                     <div className="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-md">
                         <label  className="block mt-3 text-sm text-gray-700 text-center font-semibold">
+
                             Registrate 
                         </label>
                         <div className="mt-10">
@@ -171,7 +192,7 @@ import { MetadataAlreadyExistsError } from "typeorm";
                 
                             <div className="mt-7">
                                 
-                                <button onClick={this.register}  className="bg-blue-500 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
+                                <button onClick={this.register}  disabled={isSubmitDisabled} className="bg-blue-500 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
                                     Register 
                                 </button>
                             </div>
