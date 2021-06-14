@@ -165,7 +165,7 @@ import DemoForm from './Form';
                     <div className="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-md">
                         <label  className="block mt-3 text-sm text-gray-700 text-center font-semibold">
 
-                            Registrate 
+                            Register 
                         </label>
                         <div className="mt-10">
                                             
