@@ -1,5 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
-import 'reflect-metadata'
+import "reflect-metadata"
+
 
 @Entity()
 @Unique("email",["email"])
@@ -7,15 +8,15 @@ export default class User {
 
 
     @PrimaryGeneratedColumn()
-    public id: null | any;
+    public id: null ;
     @Column()
-    public nom: string | any;
+    public nom: string ;
     @Column()
-    public prenom: string | any;
+    public prenom: string ;
     @Column({name: 'email',type:"varchar",length:"155"})
-    public email: string | any;
+    public email: string ;
     @Column()
-    public password: string | any;
+    public password: string;
 
     constructor($nom: string, $prenom: string, $email: string, $password: string) {
     
@@ -26,6 +27,8 @@ export default class User {
       
 
     }
-
+    public get $nom(): string {
+        return this.nom;
+    }
     
 }

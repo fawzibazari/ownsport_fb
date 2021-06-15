@@ -2,15 +2,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import PasswordException from '../exception/PasswordException';
 import { Connection, createConnection, createConnections, getConnection, getRepository } from "typeorm";
-import User from '../entities/user';
+import User from '../../../entities/ENuser'
 
-//  fouzizinull () => {
-//   try {
-//     await createConnection();
-// } catch (err) {
-//     await getConnection();
-// }
-// }
+ 
 
 
 export default  async (req: NextApiRequest, res: NextApiResponse) => {
@@ -19,16 +13,34 @@ export default  async (req: NextApiRequest, res: NextApiResponse) => {
     
   
       console.log(data)
+     
+    console.log('a')
       const pass = await PasswordException.hashPassword(data.password);
-      const u:User = new User(data['nom'], data['prenom'],data['email'],pass)
+      console.log('aa')
+      let u:User = new User(data['nom'], data['prenom'],data['email'],pass)
+      console.log('aaa')
+      console.log(u)
       
-       
+        await createConnection({
+          type: "mysql",
+          host: "localhost",
+          port: 8889,
+          username: "root",
+          password: "root",
+          database: "ownsportFB",
+          entities: [User]
+        });
+    
     
    
      let co = await getConnection();
+     console.log('aaaa')
      await co.manager.save(u).then(u => {
-      return res.status(200).json({message:'utilisateur cree',u})     
+     
+          console.log(u)
      })
+     await co.close();
+     return res.status(200).json({message:'utilisateur cree'}) 
       console.log(u.id)
       
         
